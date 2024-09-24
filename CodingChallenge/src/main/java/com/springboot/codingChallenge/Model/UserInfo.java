@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 @Entity
 public class UserInfo {
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     private String username;
 
@@ -17,20 +17,24 @@ public class UserInfo {
 
     private String role;
 
-    public UserInfo() {
-    }
+	public UserInfo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
-    public UserInfo(String username, String password, String role) {
-        this.username = username;
-        this.password = password;
-        this.role = role;
-    }
-    
-	public Long getId() {
+	public UserInfo(int id, String username, String password, String role) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.password = password;
+		this.role = role;
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -57,6 +61,10 @@ public class UserInfo {
 	public void setRole(String role) {
 		this.role = role;
 	}
-    
-    
+
+	@Override
+	public String toString() {
+		return "UserInfo [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
+	}
+
 }

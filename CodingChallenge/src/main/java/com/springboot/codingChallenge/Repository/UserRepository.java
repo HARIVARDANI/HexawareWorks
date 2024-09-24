@@ -8,6 +8,7 @@ import com.springboot.codingChallenge.Model.UserInfo;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserInfo, Long> {
+public interface UserRepository extends JpaRepository<UserInfo, Integer> {
+	
     Optional<UserInfo> findByUsername(String username);
 }

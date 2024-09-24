@@ -29,6 +29,11 @@ public class SecurityConfig {
                .authorizeHttpRequests(auth -> auth
                        .requestMatchers("/auth/token").permitAll()
                        .requestMatchers("/auth/signup").permitAll()
+                       .requestMatchers("/task/addTask").hasAnyRole("ADMIN")
+                       .requestMatchers("/task/getAllTask").hasAnyRole("ADMIN")
+                       .requestMatchers("/task/getTaskById/{taskId}").hasAnyRole("ADMIN")
+                       .requestMatchers("/task/updateTask/{taskId}").hasAnyRole("ADMIN")
+                       .requestMatchers("/task/deleteTask/{taskId}").hasAnyRole("ADMIN")
                        .anyRequest().authenticated()
                )
                .sessionManagement(session -> session
